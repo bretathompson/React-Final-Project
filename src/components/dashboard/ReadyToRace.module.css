@@ -1,0 +1,54 @@
+
+body {
+    font-family: 'Helvetica';
+  }
+  
+  h1, h2, h3 {
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.2rem;
+  }
+  
+  h3 {
+    font-size: 1rem;
+  }
+
+  .backgroundgradient {
+    background: linear-gradient(#06363a, #00318d);
+   }
+
+   .ol {
+    list-style: none;
+        padding: 80px;
+        text-align: center;
+  }
+
+  .productarticle {
+    width: 150px;
+    float: left;
+    margin-left: 25px;
+    margin-bottom: 10px;
+  }
+  
+  .productarticlethumbnail {
+    width: 100px;
+    height: 150px;
+  }
+  
+  .productarticlename {
+    font-size: 15px;
+    color: #ff1f1f;
+   }
+  
+  .productarticleprice {
+    font-size: 15px;
+    color: #c06600;;
+      padding-top: 15px;
+  }
