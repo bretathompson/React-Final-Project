@@ -52,13 +52,20 @@ a {
 text-align: center;
 }
 
+.home {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ color: #d80c0c;
+}
+
 .cart{
   float: right;
    color: rgb(18, 145, 1);
 }
 
 .signin{
-  color: rgb(2, 2, 2);
+  color: rgb(18, 145, 1);
 }
 
 .price{

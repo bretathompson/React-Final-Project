@@ -13,6 +13,9 @@ export default function Header(props) {
         </a>
       </div>
       <div>
+      <Link className='home' to="/" href="">Home</Link>
+      </div>
+      <div>
         <a className='cart' href="#/cart">
           Cart{' '}
           {props.countCartItems ? (
