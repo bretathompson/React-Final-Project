@@ -17,8 +17,12 @@ function ReadyToRace() {
 
     return (
       <div>
-          <Header countCartItems={cartItems.length}></Header>
-         <ol className={Racecss.ol}>
+            <Header countCartItems={cartItems.length}></Header>
+          <div className='row'>
+               <main className="block col-2">
+                 <h1 className='product'>Products</h1>  
+
+                  <ol className={Racecss.ol}>
 
                 <li>
                 <article className={Racecss.productarticle}>
@@ -63,11 +67,11 @@ function ReadyToRace() {
                     <button id={Racecss.stealth1} type="button"> Add to Cart</button>
                     </div>
                 </article>
-                </li>
-
-             </ol>
-             
-        </div>
+              </li>
+              </ol>             
+            </main>
+        </div>       
+     </div>
 
     );
 }

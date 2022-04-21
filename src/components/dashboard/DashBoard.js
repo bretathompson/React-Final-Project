@@ -4,7 +4,7 @@ import Basket from './Basket';
 import data from './data';
 import AuthContext from '../auth/auth-context';
 import { useContext } from 'react';
-import Axles from './Axles';
+
 
 function DashBoard() {
   const { products } = data;

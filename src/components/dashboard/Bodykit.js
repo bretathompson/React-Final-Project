@@ -7,8 +7,6 @@ import imgWedge from '../image/wedge.PNG';
 
 import Main from './Main';
 import Basket from './Basket';
-import data from './data';
-import DashBoard from './DashBoard';
 import Header from './Header';
 import AuthContext from '../auth/auth-context';
 import { useContext } from 'react';
@@ -19,9 +17,13 @@ function Bodykit() {
     const {cartItems, setCartItems} = cartcontext;
 
     return (
-      <div>
-          <Header countCartItems={cartItems.length}></Header>
-         <ol className={Bodycss.ol}>
+        <div>
+            <Header countCartItems={cartItems.length}></Header>
+          <div className='row'>
+               <main className="block col-2">
+                 <h1 className='product'>Products</h1>       
+                    
+                 <ol className={Bodycss.ol}>
                 <li>
                 <article className={Bodycss.productarticle}>
                     <figure>
@@ -67,8 +69,9 @@ function Bodykit() {
                 </article>
                 </li>
 
-             </ol>
-             
+                </ol>
+              </main>
+            </div>       
         </div>
 
     );

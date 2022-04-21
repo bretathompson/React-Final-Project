@@ -17,10 +17,13 @@ function Wheels() {
 
     return (
       <div>
-          <Header countCartItems={cartItems.length}></Header>
-         <ol className={Wheelscss.ol}>
+           <Header countCartItems={cartItems.length}></Header>
+         <div className='row'>
+             <main className="block col-2">
+                 <h1 className='product'>Products</h1> 
 
-                <li>
+                <ol className={Wheelscss.ol}>
+                 <li>
                 <article className={Wheelscss.productarticle}>
                     <figure>
                     <img className={Wheelscss.productarticlethumbnail} src={imgstock} />
@@ -51,7 +54,7 @@ function Wheels() {
                 </li>
 
                 <li>
-                <article className={Wheelscss.productarticle}>
+                 <article className={Wheelscss.productarticle}>
                     <figure>
                     <img className={Wheelscss.productarticlethumbnail} src={imgUltraLight} />
                     </figure>
@@ -62,12 +65,12 @@ function Wheels() {
                     <div className={Wheelscss.addtocartbutton}>
                     <button id={Wheelscss.button} type="button"> Add to Cart</button>
                     </div>
-                </article>
+                 </article>
                 </li>
-
-             </ol>
-             
-        </div>
+               </ol>
+              </main>
+           </div>       
+      </div>
 
     );
 }

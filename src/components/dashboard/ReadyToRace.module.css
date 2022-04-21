@@ -25,6 +25,8 @@ body {
    }
 
    .ol {
+    display: flex;
+    flex-direction: row;
     list-style: none;
         padding: 80px;
         text-align: center;

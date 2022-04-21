@@ -25,6 +25,8 @@ body {
    }
 
    .ol {
+    display: flex;
+    flex-direction: row;
     list-style: none;
         padding: 80px;
         text-align: center;
@@ -55,8 +57,3 @@ body {
       margin-left: 50px;
   }
 
-  /* .button {
-    font-size: 15px;
-    padding-top: 15px;
-    margin-left: 100px;
-} */

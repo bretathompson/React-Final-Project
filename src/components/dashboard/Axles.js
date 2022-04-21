@@ -18,7 +18,11 @@ function Axles() {
     return (
       <div>
           <Header countCartItems={cartItems.length}></Header>
-         <ol className={Axlescss.ol}>
+          <div className='row'>
+             <main className="block col-2">
+                <h1 className='product'>Products</h1> 
+          
+              <ol className={Axlescss.ol}>
 
                 <li>
                 <article className={Axlescss.productarticle}>
@@ -65,10 +69,10 @@ function Axles() {
                 </article>
                 </li>
 
-             </ol>
-             
-        </div>
-
+                </ol>
+             </main>
+          </div>       
+     </div>
     );
 }
 
