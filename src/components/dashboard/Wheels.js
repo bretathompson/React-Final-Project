@@ -44,7 +44,7 @@ function Wheels() {
                     <img className={Wheelscss.productarticlethumbnail} src={imgProLight} />
                     </figure>
                     <header>
-                    <span className={Wheelscss.productarticlename}>PL 1.5g</span>
+                    <span className={Wheelscss.productarticlename}>PPL 1.5 grams</span>
                     </header>
                     <p className={Wheelscss.productarticleprice}>$38</p>
                     <div className={Wheelscss.addtocartbutton}>
@@ -59,7 +59,7 @@ function Wheels() {
                     <img className={Wheelscss.productarticlethumbnail} src={imgUltraLight} />
                     </figure>
                     <header>
-                    <span className={Wheelscss.productarticlename}>UL 1grams</span>
+                    <span className={Wheelscss.productarticlename}>UL 1 grams</span>
                     </header>
                     <p className={Wheelscss.productarticleprice}>$45</p>
                     <div className={Wheelscss.addtocartbutton}>
