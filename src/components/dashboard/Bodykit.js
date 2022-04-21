@@ -5,7 +5,6 @@ import imgLowProfile from '../image/lowprofile.PNG';
 import imgLowRider from '../image/lowrider.PNG';
 import imgWedge from '../image/wedge.PNG';
 
-import Main from './Main';
 import Basket from './Basket';
 import Header from './Header';
 import AuthContext from '../auth/auth-context';
