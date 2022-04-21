@@ -57,6 +57,7 @@ text-align: center;
  flex-direction: row;
  justify-content: center;
  color: #d80c0c;
+  padding-top: 1rem;
 }
 
 .cart{
