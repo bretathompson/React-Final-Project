@@ -10,6 +10,7 @@ function DashBoard() {
   const { products } = data;
   const cartcontext = useContext(AuthContext);
   const {cartItems, setCartItems} = cartcontext;
+
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist) {
@@ -22,6 +23,7 @@ function DashBoard() {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
+
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist.qty === 1) {
@@ -34,6 +36,11 @@ function DashBoard() {
       );
     }
   };
+
+  const onRemoveAll = () => {
+    setCartItems([]);
+  };
+
   return (
     <div className="DashBoard">
       <Header countCartItems={cartItems.length}></Header>
@@ -43,6 +50,7 @@ function DashBoard() {
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
+          onRemoveAll={onRemoveAll}
         ></Basket>
       </div>
     </div>

@@ -1,26 +1,54 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Bodycss from './Bodykit.module.css';
 import Racecss from './ReadyToRace.module.css';
-
 import imgBasic from '../image/Basic.png'; 
 import imgArrow from '../image/Arrow.png';
 import imgStealth from '../image/stealth.jpg';
-
 import Basket from './Basket';
 import Header from './Header';
 import AuthContext from '../auth/auth-context';
-import { useContext } from 'react';
 
 
 function ReadyToRace() {
-    const cartcontext = useContext(AuthContext);
-    const {cartItems, setCartItems} = cartcontext;
+  const cartcontext = useContext(AuthContext);
+  const {cartItems, setCartItems} = cartcontext;
+
+  const onAdd = (product) => {
+      const exist = cartItems.find((x) => x.id === product.id);
+      if (exist) {
+          setCartItems(
+              cartItems.map((x) =>
+                  x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+              )
+          );
+      } else {
+          setCartItems([...cartItems, { ...product, qty: 1 }]);
+      }
+  };
+
+  const onRemove = (product) => {
+      const exist = cartItems.find((x) => x.id === product.id);
+      if (exist.qty === 1) {
+          setCartItems(cartItems.filter((x) => x.id !== product.id));
+      } else {
+          setCartItems(
+              cartItems.map((x) =>
+                  x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
+              )
+          );
+      }
+  };
+
+  const onRemoveAll = () => {
+      setCartItems([]);
+  };
 
     return (
       <div>
             <Header countCartItems={cartItems.length}></Header>
           <div className='row'>
                <main className="block col-2">
-                 <h1 className='product'>Products</h1>  
+               <h1 className='product'><a href="/products" className={Bodycss.productLink}>Products</a></h1> 
 
                   <ol className={Racecss.ol}>
 
@@ -32,9 +60,10 @@ function ReadyToRace() {
                     <header>
                     <span className={Racecss.productarticlename}>Basic</span>
                     </header>
-                    <p className={Racecss.productarticleprice}>$60</p>
+                    <p className={Racecss.productarticleprice}>$90</p>
                     <div className={Racecss.addtocartbutton}>
-                    <button id={Racecss.basic1} type="button"> Add to Cart</button>
+                    <button id={Racecss.basic1} type="button" onClick={() => 
+                      onAdd({id: 1, name: 'Basic Wedge', price: 90})}> Add to Cart</button>
                     </div>
                 </article>
                 </li>
@@ -47,9 +76,10 @@ function ReadyToRace() {
                     <header>
                     <span className={Racecss.productarticlename}>Arrow</span>
                     </header>
-                    <p className={Racecss.productarticleprice}>$65</p>
+                    <p className={Racecss.productarticleprice}>$90</p>
                     <div className={Racecss.addtocartbutton}>
-                    <button id={Racecss.arrow1} type="button"> Add to Cart</button>
+                    <button id={Racecss.arrow1} type="button" onClick={() => 
+                      onAdd({id: 1, name: 'Arrow', price: 90})}> Add to Cart</button>
                     </div>
                 </article>
                 </li>
@@ -64,12 +94,14 @@ function ReadyToRace() {
                     </header>
                     <p className={Racecss.productarticleprice}>$100</p>
                     <div className={Racecss.addtocartbutton}>
-                    <button id={Racecss.stealth1} type="button"> Add to Cart</button>
+                    <button id={Racecss.stealth1} type="button" onClick={() => 
+                      onAdd({id: 1, name: 'Stealth', price: 100})}> Add to Cart</button>
                     </div>
                 </article>
               </li>
               </ol>             
             </main>
+            <Basket cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} onRemoveAll={onRemoveAll}></Basket>
         </div>       
      </div>
 

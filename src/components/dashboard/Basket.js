@@ -1,11 +1,12 @@
 import React from 'react';
 
 export default function Basket(props) {
-  const { cartItems, onAdd, onRemove } = props;
+  const { cartItems, onAdd, onRemove, onRemoveAll } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = itemsPrice > 2000 ? 0 : 10;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
+
   return (
     <aside className="block col-1">
       <h2>Cart Items</h2>
@@ -59,6 +60,9 @@ export default function Basket(props) {
             <div className="row">
               <button onClick={() => alert('Implement Checkout!')}>
                 Checkout
+                </button>
+              <button onClick={onRemoveAll} className="remove-all">
+                Remove All
               </button>
             </div>
           </>
@@ -67,3 +71,4 @@ export default function Basket(props) {
     </aside>
   );
 }
+
