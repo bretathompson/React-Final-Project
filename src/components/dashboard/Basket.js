@@ -1,7 +1,6 @@
 import React from 'react';
 
-export default function Basket(props) {
-  const { cartItems, onAdd, onRemove, onRemoveAll } = props;
+export default function Basket({ cartItems, onAdd, onRemove, onRemoveAll }) {
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const taxPrice = itemsPrice * 0.14;
   const shippingPrice = itemsPrice > 2000 ? 0 : 10;
@@ -23,7 +22,6 @@ export default function Basket(props) {
                 +
               </button>
             </div>
-
             <div className="col-2 text-right">
               {item.qty} x ${item.price.toFixed(2)}
             </div>
@@ -43,9 +41,7 @@ export default function Basket(props) {
             </div>
             <div className="row">
               <div className="col-2">Shipping Price</div>
-              <div className="col-1 text-right">
-                ${shippingPrice.toFixed(2)}
-              </div>
+              <div className="col-1 text-right">${shippingPrice.toFixed(2)}</div>
             </div>
 
             <div className="row">
@@ -60,7 +56,7 @@ export default function Basket(props) {
             <div className="row">
               <button onClick={() => alert('Implement Checkout!')}>
                 Checkout
-                </button>
+              </button>
               <button onClick={onRemoveAll} className="remove-all">
                 Remove All
               </button>
@@ -71,4 +67,3 @@ export default function Basket(props) {
     </aside>
   );
 }
-

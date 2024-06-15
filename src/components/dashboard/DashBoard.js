@@ -1,9 +1,9 @@
-import Header from './Header';
+import { useContext } from 'react';
 import Main from './Main';
 import Basket from './Basket';
 import data from './data';
+import Header from './Header';
 import AuthContext from '../auth/auth-context';
-import { useContext } from 'react';
 
 
 function DashBoard() {

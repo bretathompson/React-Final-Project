@@ -1,12 +1,12 @@
 
 body {
-    font-family: 'Helvetica';
-  }
+  font-family: 'Helvetica';
+}
   
-  h1, h2, h3 {
-    margin: 0.5rem 0;
-    text-align: center;
-  }
+h1, h2, h3 {
+  margin: 0.5rem 0;
+  text-align: center;
+}
   
   h1 {
     font-size: 1.5rem;
@@ -24,7 +24,7 @@ body {
     background: linear-gradient(#06363a, #00318d);
    }
 
-   .ol {
+  .ol {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -55,5 +55,11 @@ body {
     color: #c06600;;
       padding-top: 15px;
       margin-left: 50px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 

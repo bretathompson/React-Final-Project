@@ -11,9 +11,9 @@ export default function Product({ product, onAdd }) {
           <span>{product.name}</span>
         )}
       </h3>
-      <div>
-        {/* <button onClick={() => onAdd(product)}>Add To Cart</button> */}
-      </div>
+      {/* <div>
+        <button onClick={() => onAdd(product)}>Add To Cart</button>
+      </div> */}
     </div>
   );
 }

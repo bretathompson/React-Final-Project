@@ -54,3 +54,9 @@ body {
     color: #c06600;;
       padding-top: 15px;
   }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
