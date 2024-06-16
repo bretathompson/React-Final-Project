@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 
 export default function Product({ product, onAdd }) {
   return (
@@ -6,7 +8,7 @@ export default function Product({ product, onAdd }) {
       <img className="small" src={product.image} alt={product.name} />
       <h3>
         {product.link ? (
-          <a href={product.link}>{product.name}</a>
+          <Link to={product.link}>{product.name}</Link>
         ) : (
           <span>{product.name}</span>
         )}

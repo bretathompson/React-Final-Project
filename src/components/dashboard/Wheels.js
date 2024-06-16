@@ -6,6 +6,7 @@ import imgstock from '../image/stock.PNG';
 import imgProLight from '../image/ProLight.PNG';
 import Header from './Header';
 import Basket from './Basket';
+import {Link} from 'react-router-dom';
 import AuthContext from '../auth/auth-context';
 
 function Wheels() {
@@ -47,7 +48,8 @@ function Wheels() {
             <Header countCartItems={cartItems.length}></Header>
             <div className="row">
                 <main className="block col-2">
-                    <h1 className='product'><a href="/products" className={Bodycss.productLink}>Products</a></h1>
+                    {/* <h1 className='product'><a href="/products" className={Bodycss.productLink}>Products</a></h1> */}
+                    <Link className='product' to="/" href="">Products</Link>
                     <ol className={Wheelscss.ol}>
                         <li>
                             <article className={Wheelscss.productarticle}>
@@ -108,31 +110,3 @@ function Wheels() {
 
 export default Wheels;
 
-
-
-
-// what it gave me when i asked it to have all cart code in its own js file and to import it on
-  // each page. but it didnt have me chagne the other pages the same odd.
-
-// import React, { useContext } from 'react';
-// import { CartContext } from './CartContext'; // Adjust path as per your project structure
-
-// function Wheels() {
-//   const { cartItems, addItem, removeItem } = useContext(CartContext);
-
-//   const handleAddToCart = (product) => {
-//     addItem(product);
-//   };
-
-//   return (
-//     <div>
-//       <h1>Wheels Page</h1>
-//       <button onClick={() => handleAddToCart({ id: 1, name: 'Wheel Product', price: 10 })}>
-//         Add Wheel Product to Cart
-//       </button>
-//       <p>Cart Items: {cartItems.length}</p>
-//     </div>
-//   );
-// }
-
-// export default Wheels;
