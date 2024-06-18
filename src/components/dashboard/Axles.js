@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid'; 
 import Bodycss from './Bodykit.module.css';
 import Axlescss from './Axles.module.css';
 import imgProSSGroove from '../image/ProSSGroove.PNG'; 
@@ -6,7 +7,7 @@ import imgspeed from '../image/speed.PNG';
 import imgZinc from '../image/Zinc.PNG';
 import Header from './Header';
 import Basket from './Basket';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthContext from '../auth/auth-context';
 
 function Axles() {
@@ -14,29 +15,12 @@ function Axles() {
   const { cartItems, setCartItems } = cartcontext;
 
   const onAdd = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist) {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-        )
-      );
-    } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
-    }
+    const newItem = { ...product, cartId: uuidv4(), qty: 1 };
+    setCartItems([...cartItems, newItem]);
   };
 
-  const onRemove = (product) => {
-    const exist = cartItems.find((x) => x.id === product.id);
-    if (exist.qty === 1) {
-      setCartItems(cartItems.filter((x) => x.id !== product.id));
-    } else {
-      setCartItems(
-        cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-        )
-      );
-    }
+  const onRemove = (cartId) => {
+    setCartItems(cartItems.filter((item) => item.cartId !== cartId));
   };
 
   const onRemoveAll = () => {
@@ -48,7 +32,6 @@ function Axles() {
       <Header countCartItems={cartItems.length}></Header>
       <div className="row">
         <main className="block col-2">
-          {/* <h1 className='product'><a href="/">Products</a></h1> */}
           <Link className='product' to="/" href="">Products</Link>
           <ol className={Axlescss.ol}>
             <li>
@@ -98,12 +81,12 @@ function Axles() {
             </li>
           </ol>
         </main>
-          <Basket
-            cartItems={cartItems}
-            onAdd={onAdd}
-            onRemove={onRemove}
-            onRemoveAll={onRemoveAll}
-          />
+        <Basket
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onRemoveAll={onRemoveAll}
+        />
       </div>
     </div>
   );

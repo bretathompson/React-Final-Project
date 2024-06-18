@@ -1,45 +1,29 @@
 import React, { useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import Bodycss from './Bodykit.module.css';
 import imgLowProfile from '../image/lowprofile.PNG'; 
 import imgLowRider from '../image/lowrider.PNG';
 import imgWedge from '../image/wedge.PNG';
 import Header from './Header';
 import Basket from './Basket';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthContext from '../auth/auth-context';
 
 function Bodykit() {
     const cartcontext = useContext(AuthContext);
     const { cartItems, setCartItems } = cartcontext;
-  
+
     const onAdd = (product) => {
-      const exist = cartItems.find((x) => x.id === product.id);
-      if (exist) {
-        setCartItems(
-          cartItems.map((x) =>
-            x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-          )
-        );
-      } else {
-        setCartItems([...cartItems, { ...product, qty: 1 }]);
-      }
+      const newItem = { ...product, cartId: uuidv4(), qty: 1 };
+      setCartItems([...cartItems, newItem]);
     };
-  
-    const onRemove = (product) => {
-      const exist = cartItems.find((x) => x.id === product.id);
-      if (exist.qty === 1) {
-        setCartItems(cartItems.filter((x) => x.id !== product.id));
-      } else {
-        setCartItems(
-          cartItems.map((x) =>
-            x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-          )
-        );
-      }
+
+    const onRemove = (cartId) => {
+        setCartItems(cartItems.filter((item) => item.cartId !== cartId));
     };
-  
+
     const onRemoveAll = () => {
-      setCartItems([]);
+        setCartItems([]);
     };
 
     return (
@@ -47,7 +31,6 @@ function Bodykit() {
             <Header countCartItems={cartItems.length}></Header>
             <div className='row'>
                 <main className="block col-2">
-                    {/* <h1 className='product'><a href="/products" className={Bodycss.productLink}>Products</a></h1>*/}
                     <Link className='product' to="/" href="">Products</Link>
                     <ol className={Bodycss.ol}>
                         <li>

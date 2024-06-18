@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid'; 
 import Bodycss from './Bodykit.module.css';
 import Racecss from './ReadyToRace.module.css';
 import imgBasic from '../image/Basic.png'; 
@@ -6,7 +7,7 @@ import imgArrow from '../image/Arrow.png';
 import imgStealth from '../image/stealth.jpg';
 import Header from './Header';
 import Basket from './Basket';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthContext from '../auth/auth-context';
 
 function ReadyToRace() {
@@ -14,29 +15,12 @@ function ReadyToRace() {
     const { cartItems, setCartItems } = cartcontext;
 
     const onAdd = (product) => {
-        const exist = cartItems.find((x) => x.id === product.id);
-        if (exist) {
-            setCartItems(
-                cartItems.map((x) =>
-                    x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
-                )
-            );
-        } else {
-            setCartItems([...cartItems, { ...product, qty: 1 }]);
-        }
-    };
+        const newItem = { ...product, cartId: uuidv4(), qty: 1 };
+        setCartItems([...cartItems, newItem]);
+      };
 
-    const onRemove = (product) => {
-        const exist = cartItems.find((x) => x.id === product.id);
-        if (exist.qty === 1) {
-            setCartItems(cartItems.filter((x) => x.id !== product.id));
-        } else {
-            setCartItems(
-                cartItems.map((x) =>
-                    x.id === product.id ? { ...exist, qty: exist.qty - 1 } : x
-                )
-            );
-        }
+    const onRemove = (cartId) => {
+        setCartItems(cartItems.filter((item) => item.cartId !== cartId));
     };
 
     const onRemoveAll = () => {
@@ -48,13 +32,12 @@ function ReadyToRace() {
             <Header countCartItems={cartItems.length}></Header>
             <div className='row'>
                 <main className="block col-2">
-                    {/* <h1 className='product'><a href="/products" className={Bodycss.productLink}>Products</a></h1> */}
                     <Link className='product' to="/" href="">Products</Link>
                     <ol className={Racecss.ol}>
                         <li>
                             <article className={Racecss.productarticle}>
                                 <figure>
-                                    <img className={Racecss.productarticlethumbnail} src={imgBasic} />
+                                    <img className={Racecss.productarticlethumbnail} src={imgBasic} alt="Basic Wedge" />
                                 </figure>
                                 <header>
                                     <span className={Racecss.productarticlename}>Basic</span>
@@ -65,11 +48,10 @@ function ReadyToRace() {
                                 </div>
                             </article>
                         </li>
-
                         <li>
                             <article className={Racecss.productarticle}>
                                 <figure>
-                                    <img className={Racecss.productarticlethumbnail} src={imgArrow} />
+                                    <img className={Racecss.productarticlethumbnail} src={imgArrow} alt="Arrow" />
                                 </figure>
                                 <header>
                                     <span className={Racecss.productarticlename}>Arrow</span>
@@ -80,11 +62,10 @@ function ReadyToRace() {
                                 </div>
                             </article>
                         </li>
-
                         <li>
                             <article className={Racecss.productarticle}>
                                 <figure>
-                                    <img className={Racecss.productarticlethumbnail} src={imgStealth} />
+                                    <img className={Racecss.productarticlethumbnail} src={imgStealth} alt="Stealth" />
                                 </figure>
                                 <header>
                                     <span className={Racecss.productarticlename}>Stealth</span>
